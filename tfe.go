@@ -921,6 +921,14 @@ func checkResponseCode(r *http.Response) error {
 			}
 
 			return ErrWorkspaceNotSafeToDelete
+		case strings.HasSuffix(r.Request.URL.Path, "workspaces"):
+			errs, err = decodeErrorPayload(r)
+			if err != nil {
+				return err
+			}
+			if errorPayloadContains(errs, "resource already exists") {
+				return ErrResourceAlreadyExists
+			}
 		}
 	}
 

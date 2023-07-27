@@ -15,6 +15,9 @@ var (
 	// ErrResourceNotFound is returned when receiving a 404.
 	ErrResourceNotFound = errors.New("resource not found")
 
+	// ErrResourceAlreadyExists is returned when receiving a 403.
+	ErrResourceAlreadyExists = errors.New("resource already exists")
+
 	// ErrMissingDirectory is returned when the path does not have an existing directory.
 	ErrMissingDirectory = errors.New("path needs to be an existing directory")
 
